@@ -20,6 +20,25 @@ const appRouter = router({
       id: "1",
     };
   }),
+
+  signUp: publicProcedure
+    .input(
+      z.object({
+        email: z.string().email(),
+        password: z.string(),
+      })
+    )
+    .mutation(async (opts) => {
+      const email = opts.input.email;
+      const password = opts.input.password;
+
+      // Do database call and henerate token from JWT
+
+      const token = "123409876";
+      return {
+        token,
+      };
+    }),
 });
 
 const server = createHTTPServer({
